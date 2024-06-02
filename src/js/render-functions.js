@@ -1,3 +1,6 @@
+
+import iziToast from 'izitoast';
+
 export function renderGallery(images) {
   const gallery = document.querySelector('.gallery');
   gallery.innerHTML = images.map(image => `
@@ -23,4 +26,18 @@ export function hideLoader() {
 
 export function clearGallery() {
   document.querySelector('.gallery').innerHTML = '';
+}
+
+export function showErrorToast(message) {
+  iziToast.error({
+    title: 'Error',
+    message: message
+  });
+}
+
+export function showInfoToast(message) {
+  iziToast.info({
+    title: 'Info',
+    message: message
+  });
 }
