@@ -1,8 +1,6 @@
-// render-functions.js
-
 export function renderGallery(images) {
-    const gallery = document.querySelector('.gallery');
-    gallery.innerHTML = images.map(image => `
+  const gallery = document.querySelector('.gallery');
+  gallery.innerHTML = images.map(image => `
     <a href="${image.largeImageURL}" class="gallery__item">
       <img src="${image.webformatURL}" alt="${image.tags}" class="gallery__image" />
       <div class="info">
@@ -15,17 +13,14 @@ export function renderGallery(images) {
   `).join('');
 }
 
-export function clearGallery() {
-    document.querySelector('.gallery').innerHTML = '';
-}
-
 export function showLoader() {
-    const loader = document.querySelector('.loader');
-    loader.style.display = 'block';
+  document.querySelector('.loader').style.display = 'block';
 }
 
 export function hideLoader() {
-    const loader = document.querySelector('.loader');
-    loader.style.display = 'none';
+  document.querySelector('.loader').style.display = 'none';
 }
 
+export function clearGallery() {
+  document.querySelector('.gallery').innerHTML = '';
+}
