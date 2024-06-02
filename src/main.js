@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
             captionDelay: 0
           });
 
-          lightbox.on('initialized.simplelightbox', function () {
+          lightbox.on('show.simplelightbox', function () {
             const slbInner = document.querySelector('.slbInner');
-            const currentImageIndex = lightbox.currentIndex();
+            const currentImageIndex = lightbox.currentImageIndex;
             const currentImage = data.hits[currentImageIndex];
             const altDescription = currentImage.tags;
             const captionHtml = `<div class="slbCaptionOuter">${altDescription}</div>`;
