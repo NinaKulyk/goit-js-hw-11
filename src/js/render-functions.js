@@ -1,44 +1,31 @@
-
+// render-functions.js
 
 export function renderGallery(images) {
-    const gallery = document.querySelector(".gallery");
-    gallery.innerHTML = images.map(image => createImageCard(image)).join("");
-    if (lightbox) {
-        lightbox.refresh();
-    } else {
-        lightbox = new SimpleLightbox(".gallery a", { captionDelay: 250, captionsData: "alt" });
-    }
+    const gallery = document.querySelector('.gallery');
+    gallery.innerHTML = images.map(image => `
+    <a href="${image.largeImageURL}" class="gallery__item">
+      <img src="${image.webformatURL}" alt="${image.tags}" class="gallery__image" />
+      <div class="info">
+        <p class="info-item">Likes: <span>${image.likes}</span></p>
+        <p class="info-item">Views: <span>${image.views}</span></p>
+        <p class="info-item">Comments: <span>${image.comments}</span></p>
+        <p class="info-item">Downloads: <span>${image.downloads}</span></p>
+      </div>
+    </a>
+  `).join('');
 }
 
-function createImageCard(image) {
-    return `
-    <div class="photo-card">
-      <a class="link" href="${image.largeImageURL}">
-        <img class="gallery-image" src="${image.webformatURL}" alt="${image.tags}">
-        <div class="info">
-        <li><h3 class="info-title">Likes</h3><p class="info-text">${image.likes}</p></li>
-        <li><h3 class="info-title">Views</h3><p class="info-text">${image.views}</p></li>
-        <li><h3 class="info-title">Comments</h3><p class="info-text">${image.comments}</p></li>
-        <li><h3 class="info-title">Downloads</h3><p class="info-text">${image.downloads}</p></li>
-      </div>
-      </a>
-    </div>
-  `;
+export function clearGallery() {
+    document.querySelector('.gallery').innerHTML = '';
 }
 
 export function showLoader() {
-    const loader = document.querySelector(".loader");
-    loader.style.display = "block";
+    const loader = document.querySelector('.loader');
+    loader.style.display = 'block';
 }
 
 export function hideLoader() {
-    const loader = document.querySelector(".loader");
-    loader.style.display = "none";
+    const loader = document.querySelector('.loader');
+    loader.style.display = 'none';
 }
 
-
-
-export function clearGallery() {
-    const gallery = document.querySelector(".gallery");
-    gallery.innerHTML = "";
-}
