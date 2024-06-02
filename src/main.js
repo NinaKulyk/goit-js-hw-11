@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         renderGallery(data.hits);
         if (!lightbox) {
-          lightbox = new SimpleLightbox('.gallery a');
+          lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250, captionsData: "alt" });
         } else {
           lightbox.refresh();
         }
